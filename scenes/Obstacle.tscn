@@ -1,0 +1,161 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://resources/ship_parts.png" type="Texture" id=1]
+[ext_resource path="res://resources/Stone_12-512x512.png" type="Texture" id=2]
+[ext_resource path="res://scripts/Obstacle.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=17]
+resource_local_to_scene = true
+extents = Vector2( 8, 10 )
+
+[sub_resource type="RectangleShape2D" id=18]
+resource_local_to_scene = true
+extents = Vector2( 5, 10 )
+
+[sub_resource type="Curve" id=2]
+min_value = 0.5
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+min_value = 0.5
+_data = [ Vector2( 0.0047619, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 15, 10 )
+
+[sub_resource type="CanvasItemMaterial" id=16]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=10]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0.193548, 0.412903, 0.567742, 0.722581, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.953125, 0.562195, 0.562195, 0.898039, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Gradient" id=8]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0, 0.56129, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 500.0
+initial_velocity_random = 0.6
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+scale = 0.2
+scale_random = 0.2
+color_ramp = SubResource( 9 )
+color_initial_ramp = SubResource( 11 )
+
+[sub_resource type="Gradient" id=13]
+resource_local_to_scene = true
+offsets = PoolRealArray( 0.193548, 0.412903, 0.567742, 0.722581, 1 )
+colors = PoolColorArray( 0.511719, 0.511719, 0.511719, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.683594, 0.683594, 0.683594, 0.898039, 0.445313, 0.445313, 0.445313, 1 )
+
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=15]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 500.0
+initial_velocity_random = 0.5
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 720.0
+angle_random = 1.0
+scale = 0.2
+scale_random = 0.2
+color_ramp = SubResource( 9 )
+color_initial_ramp = SubResource( 14 )
+
+[node name="Obstacle" type="Node2D"]
+z_index = -5
+z_as_relative = false
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="Upper" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 17 )
+disabled = true
+
+[node name="Lower" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 18 )
+disabled = true
+
+[node name="Up" type="Line2D" parent="."]
+modulate = Color( 1.50196, 1.50196, 1.50196, 1 )
+z_index = 1
+width = 35.0
+width_curve = SubResource( 2 )
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 2 )
+texture_mode = 2
+
+[node name="Down" type="Line2D" parent="."]
+modulate = Color( 1.50196, 1.50196, 1.50196, 1 )
+z_index = 1
+width = 35.0
+width_curve = SubResource( 3 )
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 2 )
+texture_mode = 2
+
+[node name="Barrier" type="Polygon2D" parent="."]
+modulate = Color( 2, 2, 2, 1 )
+color = Color( 1, 0, 0, 0.490196 )
+
+[node name="BarrierCollision" type="Area2D" parent="Barrier"]
+collision_layer = 32
+collision_mask = 8
+
+[node name="BarrierCollisionShape" type="CollisionShape2D" parent="Barrier/BarrierCollision"]
+shape = SubResource( 5 )
+disabled = true
+
+[node name="Explosion" type="Particles2D" parent="."]
+material = SubResource( 16 )
+emitting = false
+amount = 16
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource( 12 )
+texture = ExtResource( 1 )
+
+[node name="Explosion2" type="Particles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.8
+process_material = SubResource( 15 )
+texture = ExtResource( 1 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_entered" from="Barrier/BarrierCollision" to="." method="_on_BarrierCollision_area_entered"]

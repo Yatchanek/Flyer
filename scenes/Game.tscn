@@ -1,0 +1,146 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/space_bk.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Starfield.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ChunkControl.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_bloom = 0.2
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Veil/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Veil/ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "VeilDown"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Veil/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "VeilUp"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Veil/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, -2, -2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="ChunkControl" parent="." instance=ExtResource( 6 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 360 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 2048, 1024 )
+
+[node name="SpaceBk" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 887, 359 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0.2 )
+motion_mirroring = Vector2( 2048, 2048 )
+
+[node name="Starfield" parent="ParallaxBackground/ParallaxLayer2" instance=ExtResource( 5 )]
+modulate = Color( 0.403922, 0.403922, 0.403922, 1 )
+max_stars = 150
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+motion_mirroring = Vector2( 2048, 2048 )
+
+[node name="Starfield2" parent="ParallaxBackground/ParallaxLayer3" instance=ExtResource( 5 )]
+modulate = Color( 0.607843, 0.607843, 0.607843, 1 )
+max_stars = 150
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground"]
+
+[node name="HUD" parent="." instance=ExtResource( 2 )]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Veil" type="CanvasLayer" parent="."]
+layer = 6
+
+[node name="ColorRect" type="ColorRect" parent="Veil"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/VeilDown = SubResource( 3 )
+anims/VeilUp = SubResource( 4 )
+
+[connection signal="died" from="Player" to="HUD" method="_on_Player_died"]
+[connection signal="lighton" from="Player" to="." method="_on_Player_lighton"]
+[connection signal="lightout" from="Player" to="." method="_on_Player_lightout"]
+[connection signal="lightout" from="Player" to="HUD" method="_on_Player_lightout"]
+[connection signal="lightout_time_updated" from="Player" to="HUD" method="_on_Player_lightout_time_updated"]
+[connection signal="reverse_time_updated" from="Player" to="HUD" method="_on_Player_reverse_time_updated"]
+[connection signal="reversed" from="Player" to="HUD" method="_on_Player_reversed"]
+[connection signal="speed_changed" from="Player" to="HUD" method="update_speed"]
+[connection signal="quit_pressed" from="HUD" to="." method="_on_HUD_quit_pressed"]
+[connection signal="replay_pressed" from="HUD" to="." method="_on_HUD_replay_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

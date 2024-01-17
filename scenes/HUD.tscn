@@ -1,0 +1,936 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://resources/no_light.png" type="Texture" id=1]
+[ext_resource path="res://scripts/hud.gd" type="Script" id=2]
+[ext_resource path="res://resources/RubikMonoOne-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://resources/rotate.png" type="Texture" id=4]
+[ext_resource path="res://bar.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Countdown"
+length = 4.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("3:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 306, 448 ), Vector2( 306, 448 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("2:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 306, 448 ), Vector2( 306, 448 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("1:rect_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 306, 448 ), Vector2( 306, 448 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("3:rect_pivot_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 153, 224 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("3:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 2, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("2:rect_pivot_offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 156, 224 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("2:rect_scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.1, 2.1 ),
+"transitions": PoolRealArray( 2, 1, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("1:rect_pivot_offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 153, 224 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("1:rect_scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2.1, 3.1 ),
+"transitions": PoolRealArray( 2, 1, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath(".")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 4.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_game"
+} ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("3:rect_position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 487, 186 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("2:rect_position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 487, 186 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("1:rect_position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 487, 186 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("GO:rect_position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 334, 186 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("GO:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 3.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("GO:rect_scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 3.1, 4.1 ),
+"transitions": PoolRealArray( 1, 2, 2 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("GO:rect_pivot_offset")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 306, 224 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "GameOver"
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameOver:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 64, 267 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GameOver:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 2, 2 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GameOver:rect_pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 576, 93 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("GameOver:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Buttons:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("3:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 306, 448 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("2:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 306, 448 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("1:rect_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 306, 448 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("3:rect_pivot_offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 153, 224 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("3:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("2:rect_pivot_offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 156, 224 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("2:rect_scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("1:rect_pivot_offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 153, 224 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("1:rect_scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("3:rect_position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 487, 136 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("2:rect_position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 487, 136 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("1:rect_position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 487, 136 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("GO:rect_position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 334, 136 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("GO:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("GO:rect_scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("GO:rect_pivot_offset")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 306, 224 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("GameOver:rect_position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 64, 267 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("GameOver:rect_scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("GameOver:rect_pivot_offset")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 576, 93 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("GameOver:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Buttons:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 360
+outline_size = 20
+outline_color = Color( 0.427451, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 150
+outline_size = 20
+outline_color = Color( 0.427451, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.160784, 0.160784, 0.160784, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.478431, 0.478431, 0.478431, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.478431, 0.478431, 0.478431, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[node name="HUD" type="CanvasLayer"]
+layer = 6
+script = ExtResource( 2 )
+score_display_node = NodePath("HBoxContainer/HBoxContainer/ScoreCount")
+brake_gauge_node = NodePath("HBoxContainer/HBoxContainer2/BrakeGauge")
+speed_display_node = NodePath("HBoxContainer/HBoxContainer/HBoxContainer/SpeedCount")
+lightout_bar_node = NodePath("HBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer/LightOutBar")
+reverse_bar_node = NodePath("HBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2/ReverseBar")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Countdown = SubResource( 2 )
+anims/GameOver = SubResource( 5 )
+anims/RESET = SubResource( 3 )
+
+[node name="3" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 487.0
+margin_top = 136.0
+margin_right = 793.0
+margin_bottom = 584.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 153, 224 )
+custom_fonts/font = SubResource( 4 )
+text = "3"
+
+[node name="2" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 487.0
+margin_top = 136.0
+margin_right = 793.0
+margin_bottom = 584.0
+rect_pivot_offset = Vector2( 156, 224 )
+custom_fonts/font = SubResource( 4 )
+text = "2	"
+
+[node name="1" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 487.0
+margin_top = 136.0
+margin_right = 793.0
+margin_bottom = 584.0
+rect_pivot_offset = Vector2( 153, 224 )
+custom_fonts/font = SubResource( 4 )
+text = "1"
+
+[node name="GO" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 334.0
+margin_top = 136.0
+margin_right = 946.0
+margin_bottom = 584.0
+rect_pivot_offset = Vector2( 306, 224 )
+custom_fonts/font = SubResource( 4 )
+text = "GO"
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 64.0
+margin_top = 267.0
+margin_right = 1216.0
+margin_bottom = 453.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 576, 93 )
+custom_fonts/font = SubResource( 6 )
+text = "game over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1278.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+margin_right = 585.0
+margin_bottom = 50.0
+custom_constants/separation = 25
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 189.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 1 )
+text = "SCORE: "
+uppercase = true
+
+[node name="ScoreCount" type="Label" parent="HBoxContainer/HBoxContainer"]
+margin_left = 214.0
+margin_top = 5.0
+margin_right = 304.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 0 )
+custom_fonts/font = SubResource( 1 )
+align = 2
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/HBoxContainer"]
+margin_left = 329.0
+margin_right = 585.0
+margin_bottom = 50.0
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/HBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 162.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 1 )
+text = "SPEED:"
+uppercase = true
+
+[node name="SpeedCount" type="Label" parent="HBoxContainer/HBoxContainer/HBoxContainer"]
+margin_left = 166.0
+margin_top = 5.0
+margin_right = 256.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 0 )
+custom_fonts/font = SubResource( 1 )
+align = 2
+uppercase = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 615.0
+margin_top = 3.0
+margin_right = 965.0
+margin_bottom = 47.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/HBoxContainer3"]
+margin_right = 124.0
+margin_bottom = 44.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/HBoxContainer3/VBoxContainer"]
+margin_right = 124.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="LightOutIcon" type="TextureRect" parent="HBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture = ExtResource( 1 )
+expand = true
+
+[node name="LightOutBar" type="TextureProgress" parent="HBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+margin_left = 24.0
+margin_top = 5.0
+margin_right = 124.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 90, 0 )
+size_flags_vertical = 4
+value = 90.0
+texture_progress = ExtResource( 5 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/HBoxContainer3/VBoxContainer"]
+margin_top = 24.0
+margin_right = 124.0
+margin_bottom = 44.0
+
+[node name="ReverseIcon" type="TextureRect" parent="HBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="ReverseBar" type="TextureProgress" parent="HBoxContainer/HBoxContainer3/VBoxContainer/HBoxContainer2"]
+margin_left = 24.0
+margin_top = 5.0
+margin_right = 124.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 90, 0 )
+size_flags_vertical = 4
+value = 90.0
+texture_progress = ExtResource( 5 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 995.0
+margin_right = 1278.0
+margin_bottom = 50.0
+
+[node name="BrakeDisplay" type="Label" parent="HBoxContainer/HBoxContainer2"]
+margin_top = 5.0
+margin_right = 189.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 0 )
+custom_fonts/font = SubResource( 1 )
+text = "BRAKE: "
+align = 2
+uppercase = true
+
+[node name="BrakeGauge" type="Label" parent="HBoxContainer/HBoxContainer2"]
+margin_left = 193.0
+margin_top = 5.0
+margin_right = 283.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 90, 0 )
+custom_fonts/font = SubResource( 1 )
+align = 2
+uppercase = true
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -306.0
+margin_top = -182.0
+margin_right = 306.0
+margin_bottom = -112.0
+custom_constants/separation = 100
+
+[node name="Replay" type="Button" parent="Buttons"]
+margin_right = 256.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 256, 0 )
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.619608, 0.619608, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.619608, 0.619608, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+enabled_focus_mode = 0
+text = "Replay"
+
+[node name="Quit" type="Button" parent="Buttons"]
+margin_left = 356.0
+margin_right = 612.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 256, 0 )
+focus_mode = 0
+mouse_default_cursor_shape = 2
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 0.619608, 0.619608, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.619608, 0.619608, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+enabled_focus_mode = 0
+text = "quit"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="Buttons/Replay" to="." method="_on_Replay_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
